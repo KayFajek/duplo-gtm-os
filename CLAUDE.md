@@ -6,7 +6,11 @@ Duplo (tryduplo.com) is a Lagos-based B2B fintech, founded in 2021 by Yele Oyeko
 Key context files:
 - `context/icp/icp.md`: ICP in five layers, plus who is not a fit. Read before any targeting.
 - `context/icp/personas.md`: champion, economic buyer and influencer personas. Read before any copy.
+- `context/icp/signal-matrix.md`: segments x personas with angles, buying signals scored, build-first list and workflow tracker. Read before choosing or building a workflow.
+- `context/docs/gtm-system.md`: end-to-end outbound system (12 steps, tools, decisions, open decisions). Read before building or changing any part of the outbound motion.
 - `context/docs/research/`: `company.md`, `customers.md`, `competitors.md`, `market.md`, `signals.md`, `voice.md` (raw research, sourced and dated 2026-11-12).
+- `output/campaigns/w3-finance-ap-tax-hiring/workflow-spec.md`: W3 finance, AP and tax hiring workflow, STRUCTURE-APPROVED, copy pending.
+- Not created yet: `context/messaging/facts.md` (approved customer names and claims; blocks copy), `context/positioning/`, `context/brand-kit/`.
 
 ## How this folder works
 - `.claude/skills/`: reusable Claude skills for GTM tasks. Read when a task matches a skill.
