@@ -1,6 +1,6 @@
 # W3: Finance, AP and tax hiring (workflow spec)
 
-**Status:** STRUCTURE-APPROVED 2026-11-12 · copy pending
+**Status:** STRUCTURE-APPROVED 2026-11-12 (amended 2026-11-12: added `{{social_proof_s1}}` and `{{social_proof_s3}}`, user-approved) · E1 approved 2026-11-12 (revision after persona review re-approved) · E2/E3/DM1/DM2 pending
 
 This is workflow C from the 2026-11-12 proposal, built on signal U2 (tracker row W3 in `context/icp/signal-matrix.md`).
 
@@ -142,7 +142,7 @@ The cell's angle stays the same for both. Only the framing changes, so no new ax
 - Cells 7 and 8 mention foreign currency only when `mentions_fx` is true.
 - Cells 2, 6 and 10 can always mention stores, because S2 inclusion requires multi-location evidence.
 - No cell uses `location_count` or `hiring_volume_cluster` as its angle. Both are context clauses only.
-- `{{social_proof_*}}` stays empty until facts.md approves names. If none is approved, the proof clause is dropped and the angle still stands.
+- `{{social_proof_s1}}` to `{{social_proof_s4}}` come from facts.md, so every segment has a proof line. Logo-drop names (S1 and S3) prove usage only, never a result or a product.
 
 ---
 
@@ -161,8 +161,10 @@ The cell's angle stays the same for both. Only the framing changes, so no new ax
 | `{{mentions_locations}}` | Signal 4 boolean | All (may be false) |
 | `{{mentions_fx}}` | Signal 5 boolean | All (may be false). Used by cells 7 and 8 |
 | `{{hiring_volume_cluster}}` | Signal 6 label: `single_hire` / `team_growing` | All |
-| `{{social_proof_s2}}` | `context/messaging/facts.md` (approved customer name and claim for S2) | Cells 2, 6, 10. **Empty until facts.md exists** |
-| `{{social_proof_s4}}` | `context/messaging/facts.md` (approved customer name and claim for S4) | Cells 4, 8, 12. **Empty until facts.md exists** |
+| `{{social_proof_s1}}` | `context/messaging/facts.md`: Heineken, logo-drop only (added 2026-11-12) | Cells 1, 5, 9 |
+| `{{social_proof_s2}}` | `context/messaging/facts.md`: Eat'N'Go, approved phrasing | Cells 2, 6, 10 |
+| `{{social_proof_s3}}` | `context/messaging/facts.md`: Maersk, DP World, Krones, logo-drop only (added 2026-11-12) | Cells 3, 7, 11 |
+| `{{social_proof_s4}}` | `context/messaging/facts.md`: Prunet Digital, PressOne Africa | Cells 4, 8, 12 |
 
 Rules:
 - If a field isn't delivered by the enrichment, copy can never say it.
@@ -208,8 +210,87 @@ Rules:
 - [x] Engine/ICP markers on every section
 - [x] Cadence and channel declared
 
+## Copy
+
+Facts source: `context/messaging/facts.md`, created 2026-11-12.
+Sequence: E1 on day 0, E2 on day 3, E3 on day 10 (same thread). LinkedIn: an empty connect with E1, DM1 after acceptance, DM2 a few days later.
+Signature: `{{sender_signature}}`, set per inbox.
+
+### Email 1 (APPROVED 2026-11-12, revised after persona review)
+
+**Subject** (static, rotated):
+- `{{company_name}} finance hire`
+- `finance hire at {{company_name}}`
+- `{{company_name}} finance team`
+
+**Body skeleton**
+```
+{{first_name}},
+
+{{e1l1}}
+
+{{e1l2}}
+
+{{e1l3}}
+
+{{social_proof}}
+
+{Worth a look before the new hire starts?|Would it help to see it before the role is filled?|Worth a look while you're filling the role?}
+
+{{sender_signature}}
+```
+
+**e1l1: signal line** (routed by role family; exhaustive, no fallback)
+- + TAX_EINVOICING: You're hiring for the {{role_title}} role right as NRS e-invoicing is being phased in by business size.
+- + PAYABLES_TREASURY or FINANCE_BUILDOUT: You're hiring for the {{role_title}} role at {{company_name}}.
+
+**e1l2: situation line** (routed by cell)
+- + Cell 1 (tax, FMCG): My guess is that means each invoice to your distributors and retailers needs an NRS reference number before it goes out.
+- + Cell 2 (tax, retail): Across your stores, supplier invoices probably add up fast, and an invoice that isn't cleared can cost you the input VAT on it.
+- + Cell 3 (tax, logistics): Part of that job is probably connecting your ERP to the NRS, which has to go through an accredited Systems Integrator or Access Point Provider.
+- + Cell 4 (tax, services): If you invoice larger companies, I'd imagine they will want NRS-cleared invoices, since an invoice that isn't cleared can cost them the input VAT on it.
+- + Cell 5 (payables, FMCG): My guess is whoever takes it will be paying a long list of suppliers and keeping an eye on cash across more than one bank.
+- + Cell 6 (payables, retail): With each store raising its own vendor bills, I'd imagine a big part of that job is getting approvals and payments through on time.
+- + Cell 7 (payables, logistics), mentions_fx = true: From the job post, some contractor and vendor payments probably go out in foreign currency too.
+- + Cell 7 (payables, logistics), mentions_fx = false: I'd guess that job means paying a long list of contractors and vendors every month.
+- + Cell 8 (payables, services), mentions_fx = true: From the job post, I'd guess that includes paying some contractors outside Nigeria.
+- + Cell 8 (payables, services), mentions_fx = false: In a services business, I'd guess that means contractors, salaries and vendor bills, each needing someone's sign-off.
+- + Cell 9 (build-out, FMCG): When you collect from lots of retailers, my guess is a big part of the new hire's week will be matching each payment to the retailer who sent it.
+- + Cell 10 (build-out, retail): With spending happening in every store, I'd imagine one of the first asks of that hire is a clear view of where it goes.
+- + Cell 11 (build-out, logistics): If payments go out both locally and abroad, my guess is a good share of that job is reconciling across separate bank portals.
+- + Cell 12 (build-out, services): That's often the stage where a growing services business puts more structure around approvals and spend.
+
+**e1l3: value prop** (routed by role family; locked lead-in from facts.md)
+- + TAX_EINVOICING: Duplo is licensed by the NRS as both a Systems Integrator and an Access Point Provider, so invoices are cleared, paid and reconciled in one system.
+- + PAYABLES_TREASURY: Duplo runs payments, spend, NRS e-invoicing and treasury on one platform, and can pay up to 500 recipients at a time.
+- + FINANCE_BUILDOUT: Duplo runs payments, spend, NRS e-invoicing and treasury on one platform, so a growing finance team works from one place.
+
+**social_proof** (routed by segment; exhaustive)
+- + S1: Heineken is one of the companies on Duplo today.
+- + S2: Eat'N'Go, which operates Domino's Pizza, Cold Stone Creamery and Pinkberry, runs payments and approvals for over 70 of its stores on Duplo.
+- + S3: Maersk, DP World and Krones are among the 1,000+ businesses on Duplo.
+- + S4: Prunet Digital, a Lagos agency, moved its approvals off WhatsApp and onto Duplo, and put it simply: "Duplo gave us our time back."
+
+**Assembled sample** (cell 6; "Accounts Payable Officer" is an example value)
+```
+Subject: {{company_name}} finance hire
+
+{{first_name}},
+
+You're hiring for the Accounts Payable Officer role at {{company_name}}.
+
+With each store raising its own vendor bills, I'd imagine a big part of that job is getting approvals and payments through on time.
+
+Duplo runs payments, spend, NRS e-invoicing and treasury on one platform, and can pay up to 500 recipients at a time.
+
+Eat'N'Go, which operates Domino's Pizza, Cold Stone Creamery and Pinkberry, runs payments and approvals for over 70 of its stores on Duplo.
+
+Worth a look before the new hire starts?
+
+{{sender_signature}}
+```
+
 ## Next
 
-Copy: `/campaign-copy`, run on this file.
-- Its gate 1 reads this status line and this checklist.
-- `context/messaging/facts.md` must exist before any social proof is used.
+- Write E2, E3, DM1 and DM2 with `/campaign-copy`, one unit at a time.
+- Re-confirm the enterprise logos with Duplo before scaling sends (see the facts.md source note).
