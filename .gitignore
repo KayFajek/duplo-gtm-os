@@ -4,3 +4,9 @@
 *.xlsx
 .DS_Store
 .claude/settings.local.json
+!.env.example
+clay-session.json
+.treg/
+__pycache__/
+.venv/
+node_modules/
