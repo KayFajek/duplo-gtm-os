@@ -17,7 +17,7 @@ Key context files:
 - `context/brand-kit/brand.md`: tone of voice, key phrases from Duplo's copy, style rules.
 - `context/messaging/facts.md`: the ONLY source of customer names, claims and market facts allowed in outbound copy. Read before writing any copy.
 - `output/campaigns/campaign-strategy.md`: 19 ranked campaign ideas.
-- `output/campaigns/w3-finance-ap-tax-hiring/workflow-spec.md`: W3 finance, AP and tax hiring workflow. Structure approved, Email 1 approved; E2, E3 and the LinkedIn DMs pending.
+- `output/campaigns/w3-finance-ap-tax-hiring/workflow-spec.md`: W3 finance, AP and tax hiring workflow. COPY-APPROVED 2026-11-12 (3 emails + 2 LinkedIn DMs); sequencer export and pre-launch QA pending.
 
 ## How this folder works
 - `.claude/skills/`: reusable Claude skills for GTM tasks. Read when a task matches a skill.

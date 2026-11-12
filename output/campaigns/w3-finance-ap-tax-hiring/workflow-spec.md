@@ -1,6 +1,6 @@
 # W3: Finance, AP and tax hiring (workflow spec)
 
-**Status:** STRUCTURE-APPROVED 2026-11-12 (amended 2026-11-12: added `{{social_proof_s1}}` and `{{social_proof_s3}}`, user-approved) · E1 approved 2026-11-12 (revision after persona review re-approved) · E2/E3/DM1/DM2 pending
+**Status:** COPY-APPROVED 2026-11-12 (E1, E2, E3, DM1, DM2, plus the full-sequence review revisions). Structure approved 2026-11-12 and amended the same day to add `{{social_proof_s1}}` and `{{social_proof_s3}}`. Sequencer export pending.
 
 This is workflow C from the 2026-11-12 proposal, built on signal U2 (tracker row W3 in `context/icp/signal-matrix.md`).
 
@@ -245,7 +245,7 @@ Signature: `{{sender_signature}}`, set per inbox.
 - + PAYABLES_TREASURY or FINANCE_BUILDOUT: You're hiring for the {{role_title}} role at {{company_name}}.
 
 **e1l2: situation line** (routed by cell)
-- + Cell 1 (tax, FMCG): My guess is that means each invoice to your distributors and retailers needs an NRS reference number before it goes out.
+- + Cell 1 (tax, FMCG): Once it reaches you, each invoice to your distributors and retailers will need an NRS reference number before it goes out.
 - + Cell 2 (tax, retail): Across your stores, supplier invoices probably add up fast, and an invoice that isn't cleared can cost you the input VAT on it.
 - + Cell 3 (tax, logistics): Part of that job is probably connecting your ERP to the NRS, which has to go through an accredited Systems Integrator or Access Point Provider.
 - + Cell 4 (tax, services): If you invoice larger companies, I'd imagine they will want NRS-cleared invoices, since an invoice that isn't cleared can cost them the input VAT on it.
@@ -290,7 +290,116 @@ Worth a look before the new hire starts?
 {{sender_signature}}
 ```
 
+### Email 2 (APPROVED 2026-11-12)
+
+Day 3, same thread. **Subject:** `Re:` plus the Email 1 subject, unchanged.
+
+**Body skeleton**
+```
+{{first_name}},
+
+{{e2l1}}
+
+{{e2l2}}
+
+{Open to a short walkthrough?|Would a quick walkthrough be useful?|Worth a short walkthrough next week?}
+
+{{sender_signature}}
+```
+
+**e2l1: new value** (routed by role family; exhaustive, no fallback)
+- + TAX_EINVOICING: Your invoice data passes through whoever connects you to the NRS, so security probably matters as much as compliance.
+- + PAYABLES_TREASURY: The same payout run on Duplo covers 80+ currencies across 160+ countries, not only naira.
+- + FINANCE_BUILDOUT: Setting this up before the new hire starts is usually easier than moving them onto it later.
+
+**e2l2: proof** (routed by role family, and by segment within build-out; exhaustive)
+- + TAX_EINVOICING: Duplo holds ISO 27001 and 22301, is PCI DSS and NDPR compliant, and holds a CBN PSSP licence.
+- + PAYABLES_TREASURY: Over $1bn in annualised payment volume now runs through Duplo.
+- + FINANCE_BUILDOUT and S4: PressOne Africa, which grew from managing 10 businesses to supporting thousands, put it this way: "Invest in structure early."
+- + FINANCE_BUILDOUT and S1, S2 or S3: Over $1bn in annualised payment volume now runs through Duplo.
+
+**Assembled sample** (cell 6)
+```
+Subject: Re: {{company_name}} finance hire
+
+{{first_name}},
+
+The same payout run on Duplo covers 80+ currencies across 160+ countries, not only naira.
+
+Over $1bn in annualised payment volume now runs through Duplo.
+
+Open to a short walkthrough?
+
+{{sender_signature}}
+```
+
+### Email 3 (APPROVED 2026-11-12)
+
+Day 10, same thread. **Subject:** `Re:` plus the Email 1 subject, unchanged. Referral and close. No new claims.
+
+**Body skeleton**
+```
+{{first_name}},
+
+{{e3l1}}
+
+{Who would be the right person?|Who's the best person for this?|Is there someone better placed for it?}
+
+{Either way, this is my last note on it.|Either way, I'll leave it here.}
+
+{{sender_signature}}
+```
+
+**e3l1: referral line** (routed by role family; exhaustive, no fallback)
+- + TAX_EINVOICING: If e-invoicing sits with someone else at {{company_name}}, I'm happy to take this to them instead.
+- + PAYABLES_TREASURY: If vendor payments sit with someone else at {{company_name}}, I'm happy to take this to them instead.
+- + FINANCE_BUILDOUT: If finance tools are someone else's call at {{company_name}}, I'm happy to take this to them instead.
+
+**Assembled sample** (cell 6)
+```
+Subject: Re: {{company_name}} finance hire
+
+{{first_name}},
+
+If vendor payments sit with someone else at {{company_name}}, I'm happy to take this to them instead.
+
+Who would be the right person?
+
+Either way, this is my last note on it.
+
+{{sender_signature}}
+```
+
+### LinkedIn
+
+**Connection request:** empty, no note. Sent 1 to 2 days after Email 1.
+
+#### DM1 (APPROVED 2026-11-12)
+
+Sent 1 to 2 days after the request is accepted. One either/or question. No greeting, signature or link.
+
+- + TAX_EINVOICING: {{first_name}}, is the new {{role_title}} going to own e-invoicing at {{company_name}}, or does that sit with the wider finance team?
+- + PAYABLES_TREASURY: {{first_name}}, will the new {{role_title}} mainly run vendor payments at {{company_name}}, or reconciliation as well?
+- + FINANCE_BUILDOUT and hiring_volume_cluster = team_growing: {{first_name}}, with more than one finance role open at {{company_name}}, is the team taking on new areas or mainly adding capacity?
+- + FINANCE_BUILDOUT and hiring_volume_cluster = single_hire: {{first_name}}, is the {{role_title}} hire part of a wider build-out of the finance team at {{company_name}}?
+
+Sample (cell 6): {{first_name}}, will the new Accounts Payable Officer mainly run vendor payments at {{company_name}}, or reconciliation as well?
+
+#### DM2 (APPROVED 2026-11-12, revised in full-sequence review)
+
+Sent 3 to 5 days after DM1, only if there is no reply on either channel.
+
+**Timing rule:** DM2 must go out before Email 3 (day 10). If Email 3 has already been sent, skip DM2. Email 3 says "this is my last note", so DM2 can't arrive after it.
+
+Static. Spintax only.
+```
+{Asking because|The reason I ask:} I'm with Duplo, and 1,000+ businesses use us for this kind of thing. A new finance hire is often {a natural time to look at how it's set up|when teams look at how it's set up}. {Happy to show you how it works if useful.|Can show you how it works, if that's helpful.}
+```
+
+Sample: Asking because I'm with Duplo, and 1,000+ businesses use us for this kind of thing. A new finance hire is often a natural time to look at how it's set up. Happy to show you how it works if useful.
+
 ## Next
 
-- Write E2, E3, DM1 and DM2 with `/campaign-copy`, one unit at a time.
+- Export for the sequencer (`sequencer-export.md`) once Instantly or PlusVibe is chosen.
+- Before launch: `/campaign-qa`, `/inbox-placement-test`, and user approval (`CLAUDE.md`).
 - Re-confirm the enterprise logos with Duplo before scaling sends (see the facts.md source note).
