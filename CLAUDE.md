@@ -1,7 +1,12 @@
 # Duplo GTM Context OS
 
 ## Company
-Duplo (tryduplo.com), a financial operating system for African businesses (source: GTM team brief). Full description to fill in after research, with sources.
+Duplo (tryduplo.com) is a Lagos-based B2B fintech, founded in 2021 by Yele Oyekola (CEO) and Tunde Akinnuwa. It describes itself as "The financial operating system for African businesses". Products: expense management, global payments and accounts, NRS e-invoicing (licensed as both Systems Integrator and Access Point Provider) and treasury management. Nigeria is its home market and South Africa its expansion market. It has raised $13M across three rounds (YC, Oui Capital, Liquid2 and others) and claims 1,000+ businesses and over $1bn in annualised payment volume. Sources and dates are in `context/docs/research/company.md`.
+
+Key context files:
+- `context/icp/icp.md`: ICP in five layers, plus who is not a fit. Read before any targeting.
+- `context/icp/personas.md`: champion, economic buyer and influencer personas. Read before any copy.
+- `context/docs/research/`: `company.md`, `customers.md`, `competitors.md`, `market.md`, `signals.md`, `voice.md` (raw research, sourced and dated 2026-11-12).
 
 ## How this folder works
 - `.claude/skills/`: reusable Claude skills for GTM tasks. Read when a task matches a skill.
