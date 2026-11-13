@@ -13,6 +13,8 @@ No numbers are invented. Any threshold not set by the research or the playbooks 
 
 ## The flow at a glance
 
+Visual flowchart on Miro: [Duplo GTM System](https://miro.com/app/board/uXjVEOG1MrE=/) (drawn 2026-11-13 with `/miro-gtm-flowchart`; spec in `diagrams/duplo-gtm-system.json`). The board has three rows: row 1 (1A to 1K) is steps 0 to 4; row 2 (2A to 2K) is steps 5 to 7 plus copy and launch approval from step 8; row 3 (3A to 3F) is sending (step 8) through the weekly loop (step 11).
+
 ```
 0 Context OS ─► 1 Signals ─► 2 Find companies ─► 3 Enrich ─► 4 ICP fit check ─► 5 Route by segment
                                                                  │ fail                    │

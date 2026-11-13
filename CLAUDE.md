@@ -60,4 +60,4 @@ GTM stack:
 Local tools (`tools/`, read each README before use):
 - `tools/rex/`: unofficial Clay SDK using your browser session. Start with `GETTING_STARTED.md`. Session files stay out of Git.
 - `tools/crawl4ai/`, `tools/agent-browser/`: install guides for local crawling and browser control.
-- Miro MCP: needed for `/miro-gtm-flowchart` (not connected yet).
+- Miro MCP: needed for `/miro-gtm-flowchart`. Plugin `miro@miro-ai` installed at project scope (`.claude/settings.json`) on 2026-11-12. Restart Claude Code and sign in to Miro before first use.

@@ -1,0 +1,91 @@
+{
+  "title": "Duplo: outbound GTM system, end to end",
+  "subtitle": "Drawn from context/docs/gtm-system.md (v1 design, 2026-11-12, nothing built yet). Row 1 reads left to right, row 2 right to left, row 3 left to right. TBD marks open decisions.",
+  "rows": [
+    {
+      "title": "Find and qualify accounts",
+      "direction": "ltr",
+      "columns": ["1A", "1B", "1C", "1D", "1E", "1F", "1G", "1H", ["1I", "1J", "1K"]]
+    },
+    {
+      "title": "Route, find people and write the message",
+      "direction": "rtl",
+      "columns": ["2A", ["2B", "2C", "2D", "2E"], "2F", "2G", "2H", "2I", "2J", "2K"]
+    },
+    {
+      "title": "Send, handle replies and learn",
+      "direction": "ltr",
+      "columns": ["3A", "3B", ["o1", "o2", "o3", "o4", "o5", "o6"], ["a1", "a2", "a3", "a4", "a5", "a6"], "3C", "3D", "3E", "3F"]
+    }
+  ],
+  "nodes": {
+    "1A": {"kind": "start", "title": "Context OS", "sub": ["ICP, personas, signal matrix", "facts.md, weekly priorities"], "tools": ["claude_code", "github"], "w": 320},
+    "1B": {"kind": "decision", "title": "Planned?"},
+    "nobuild": {"kind": "exit", "title": "Don't build", "below": "1B"},
+    "1C": {"kind": "step", "title": "Buying signals", "sub": ["W1 Turnover band (NGX)", "W2 Outlet count up", "W3 Finance, AP, tax hiring", "W4 New finance leader", "W5 Recent funding", "W6 Several banks", "W7 New CBN licence (off)"], "tools": ["n8n", "clay"], "w": 300},
+    "1D": {"kind": "decision", "title": "Fresh event?"},
+    "dropev": {"kind": "exit", "title": "Drop event", "below": "1D"},
+    "1E": {"kind": "step", "title": "Find companies", "sub": "One row per domain, signals stack", "tools": ["clay"]},
+    "1F": {"kind": "decision", "title": "In HubSpot?"},
+    "supp": {"kind": "exit", "title": "Suppress, notify owner", "below": "1F"},
+    "1G": {"kind": "step", "title": "Enrich", "sub": "Cheap fields first, then paid columns", "tools": ["clay"]},
+    "1H": {"kind": "decision", "title": "ICP fit?"},
+    "fail": {"kind": "exit", "title": "Fail, keep the reason", "below": "1H"},
+    "1I": {"kind": "branch", "title": "Priority 1", "sub": "₦1bn+ turnover and a B pattern", "w": 280},
+    "1J": {"kind": "branch", "title": "Priority 2", "sub": "₦1bn+, e-invoicing lead only", "w": 280},
+    "1K": {"kind": "branch", "title": "Priority 3", "sub": "Turnover unknown, B pattern", "w": 280},
+
+    "2A": {"kind": "decision", "title": "Segment?"},
+    "hold": {"kind": "exit", "title": "S5 hold, unclear to review", "below": "2A"},
+    "2B": {"kind": "branch", "title": "S1 FMCG, distribution", "sub": "Payments, collections, e-invoicing", "w": 300},
+    "2C": {"kind": "branch", "title": "S2 QSR and retail", "sub": "Expenses, approvals, bulk payouts", "w": 300},
+    "2D": {"kind": "branch", "title": "S3 Logistics, manufacturing", "sub": "Global payments, vendor payouts", "w": 300},
+    "2E": {"kind": "branch", "title": "S4 B2B services, SaaS", "sub": "Expenses, approvals", "w": 300},
+    "2F": {"kind": "step", "title": "Find people", "sub": ["Champion: finance ops lead", "Buyer: CFO, or CEO if small", "Influencer: tax or ERP (U1 only)"], "tools": ["clay"], "w": 320},
+    "2G": {"kind": "decision", "title": "Anyone found?"},
+    "retry": {"kind": "exit", "title": "Retry at next refresh", "below": "2G"},
+    "2H": {"kind": "step", "title": "Find and verify email", "sub": "Waterfall, then validator (TBD)", "tools": ["clay"]},
+    "2I": {"kind": "decision", "title": "Email valid?"},
+    "lionly": {"kind": "exit", "title": "LinkedIn-only track", "below": "2I"},
+    "2J": {"kind": "step", "title": "Write the copy", "sub": ["Approved spec, then /campaign-copy", "Signal opener, facts.md proof"], "tools": ["claude_code"], "w": 320},
+    "2K": {"kind": "decision", "title": "Launch OK?"},
+    "fix": {"kind": "exit", "title": "Fix, re-run QA, hold", "below": "2K"},
+
+    "3A": {"kind": "step", "title": "Send the sequence", "sub": ["3 emails, 2 LinkedIn steps", "Stop on any reply", "LinkedIn tool TBD"], "tools": ["Instantly / PlusVibe"], "w": 300},
+    "3B": {"kind": "step", "title": "Sort replies", "sub": "AI tags intent, low confidence to a human", "tools": ["n8n"]},
+    "o1": {"kind": "branch", "title": "Positive", "h": 80},
+    "o2": {"kind": "branch", "title": "Referral", "h": 80},
+    "o3": {"kind": "branch", "title": "Objection", "h": 80},
+    "o4": {"kind": "branch", "title": "Not now", "h": 80},
+    "o5": {"kind": "branch", "title": "No or unsubscribe", "h": 80},
+    "o6": {"kind": "branch", "title": "Out of office, bounce", "h": 80},
+    "a1": {"kind": "step", "title": "Human replies, SQL and deal", "w": 320, "h": 80, "tools": ["hubspot"]},
+    "a2": {"kind": "exit", "title": "Add to People table, back to 2F", "w": 320, "h": 80},
+    "a3": {"kind": "step", "title": "Approved objection response", "w": 320, "h": 80},
+    "a4": {"kind": "exit", "title": "Snooze to their date", "w": 320, "h": 80},
+    "a5": {"kind": "exit", "title": "Suppress or opt out", "w": 320, "h": 80},
+    "a6": {"kind": "exit", "title": "Pause, or LinkedIn only", "w": 320, "h": 80},
+    "3C": {"kind": "step", "title": "HubSpot CRM", "sub": "Company, contact and deal properties", "tools": ["hubspot"]},
+    "3D": {"kind": "decision", "title": "Deal won?"},
+    "lost": {"kind": "exit", "title": "Lost: log reason", "below": "3D"},
+    "3E": {"kind": "step", "title": "Customer", "sub": "Proof in facts.md only if they approve"},
+    "3F": {"kind": "start", "title": "Weekly review", "sub": ["Positive reply rate decides", "Keep, change or kill workflows", "Write back to the Context OS"], "tools": ["claude_code", "github"], "w": 320, "align": "bottom"}
+  },
+  "edges": [
+    ["1A", "1B"], ["1B", "1C", "Yes"], ["1B", "nobuild", "No"],
+    ["1C", "1D"], ["1D", "1E", "Yes"], ["1D", "dropev", "No"],
+    ["1E", "1F"], ["1F", "1G", "No"], ["1F", "supp", "Yes"],
+    ["1G", "1H"], ["1H", "1I"], ["1H", "1J"], ["1H", "1K"], ["1H", "fail", "No"],
+    ["1I", "2A"], ["1J", "2A"], ["1K", "2A"],
+    ["2A", "2B"], ["2A", "2C"], ["2A", "2D"], ["2A", "2E"], ["2A", "hold", "S5"],
+    ["2B", "2F"], ["2C", "2F"], ["2D", "2F"], ["2E", "2F"],
+    ["2F", "2G"], ["2G", "2H", "Yes"], ["2G", "retry", "No"],
+    ["2H", "2I"], ["2I", "2J", "Yes"], ["2I", "lionly", "No"],
+    ["2J", "2K"], ["2K", "3A", "Yes"], ["2K", "fix", "No"],
+    ["3A", "3B"],
+    ["3B", "o1"], ["3B", "o2"], ["3B", "o3"], ["3B", "o4"], ["3B", "o5"], ["3B", "o6"],
+    ["o1", "a1"], ["o2", "a2"], ["o3", "a3"], ["o4", "a4"], ["o5", "a5"], ["o6", "a6"],
+    ["a1", "3C"], ["3C", "3D"], ["3D", "3E", "Won"], ["3D", "lost", "Lost"], ["3E", "3F"]
+  ],
+  "loop": {"from": "3F", "to": "1A", "label": "Weekly loop: results update the Context OS"}
+}
