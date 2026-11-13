@@ -61,3 +61,5 @@ Local tools (`tools/`, read each README before use):
 - `tools/rex/`: unofficial Clay SDK using your browser session. Start with `GETTING_STARTED.md`. Session files stay out of Git.
 - `tools/crawl4ai/`, `tools/agent-browser/`: install guides for local crawling and browser control.
 - Miro MCP: needed for `/miro-gtm-flowchart`. Plugin `miro@miro-ai` installed at project scope (`.claude/settings.json`) on 2026-11-12. Restart Claude Code and sign in to Miro before first use.
+- Notion MCP: added at project scope (`.mcp.json`, `https://mcp.notion.com/mcp`) on 2026-11-13. Restart Claude Code and sign in to Notion before first use.
+- Notion mirror: [Duplo GTM OS](https://app.notion.com/p/417fae47c77d815180afee76cd1d8693), a read-only copy of every file in `context/` and `output/` (raw research excluded), published 2026-11-13. GitHub stays the source of truth: edit files in this repo, then update the matching Notion page.
